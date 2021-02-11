@@ -92,7 +92,7 @@ namespace Practice1MsTest
             
             // Act
             var ret = obj.MathFunction(5 );
-            var res = ret < 1 & ret > 0;
+            var res = ret <= 1 & ret > 0;
             
             // Assert
             Assert.IsTrue(res);
@@ -131,7 +131,7 @@ namespace Practice1MsTest
             // Act 
             Console.WriteLine(num);
             var ret = obj.MathFunction(5 );
-            var res = ret < 1 & ret > 0;
+            var res = ret <= 1 & ret > 0;
             
             
             // Assert
@@ -165,14 +165,14 @@ namespace Practice1MsTest
         public void MathFunctionCSV_Within0To1_ReturnsTrue()
         {
             // Arrange
-            var output = ReadCsv("D:/Studying/Automated-testing/Automated-Testing/LAB1/LAB1/Practice1MsTest/file.csv");
+            var output = ReadCsv(@"D:\Studying\AT\Automated-Testing\LAB1\file.csv");
             var num = int.Parse(output[0]);
             var obj = new MethodLibrary();
             
             
             // Act
             var ret = obj.MathFunction(num);
-            var res = ret < 1 & ret > 0;
+            var res = ret <= 1 & ret > 0;
             
             
             // Assert
@@ -184,7 +184,7 @@ namespace Practice1MsTest
         public void MathFunctionCSV_NotNaN_ReturnsTrue()
         {
             // Arrange
-            var output = ReadCsv("D:/Studying/Automated-testing/Automated-Testing/LAB1/LAB1/Practice1MsTest/file.csv");
+            var output = ReadCsv(@"D:\Studying\AT\Automated-Testing\LAB1\file.csv");
             var num = int.Parse(output[0]);
             var obj = new MethodLibrary();
             

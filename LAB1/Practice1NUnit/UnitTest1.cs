@@ -1,7 +1,9 @@
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using NUnit.Framework.Internal;
 using FluentAssertions;
+using Microsoft.VisualBasic.FileIO;
 namespace Practice1NUnit
 {
     public class MethodLibrary
@@ -26,20 +28,20 @@ namespace Practice1NUnit
     public class Tests
     {
         // ReadFromCSV Function.
-        public static string[] ReadCsv(string filepath)
+        public static IEnumerable<int> GetCsv()
         {
-            try
-            { 
-                string[] lines = System.IO.File.ReadAllLines(@filepath);
-                return lines;
-            }
-            catch(Exception ex)
+            using (TextFieldParser parser =
+                new TextFieldParser(@"D:\Studying\AT\Automated-Testing\LAB1\file.csv"))
             {
-                Console.WriteLine(ex.Message);
-                return null;
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                while (!parser.EndOfData)
+                {
+                    string[] fields = parser.ReadFields();
+                    
+                    yield return int.Parse(fields[0]);
+                }
             }
-
-            return null;
         }
         
         // Run before all tests once.        
@@ -89,7 +91,7 @@ namespace Practice1NUnit
             
             // Act
             var ret = obj.MathFunction(5 );
-            var res = ret < 1 & ret > 0;
+            var res = ret <= 1 & ret > 0;
             
             
             // Assert
@@ -128,7 +130,7 @@ namespace Practice1NUnit
             // Act 
             Console.WriteLine(num);
             var ret = obj.MathFunction(5 );
-            var res = ret < 1 & ret > 0;
+            var res = ret <= 1 & ret > 0;
             
             
             // Assert
@@ -160,17 +162,16 @@ namespace Practice1NUnit
         
         // CSV
         [Test]
-        public void MathFunctionCSV_Within0To1_ReturnsTrue()
+        [TestCaseSource(nameof(GetCsv))]
+        public void MathFunctionCSV_Within0To1_ReturnsTrue(int x)
         {
             // Arrange
-            var output = ReadCsv("D:/Studying/Automated-testing/Automated-Testing/LAB1/LAB1/Practice1MsTest/file.csv");
-            var num = int.Parse(output[0]);
             var obj = new MethodLibrary();
             
             
             // Act
-            var ret = obj.MathFunction(num);
-            var res = ret < 1 & ret > 0;
+            var ret = obj.MathFunction(x);
+            var res = ret <= 1 & ret > 0;
             
             
             // Assert
@@ -179,16 +180,15 @@ namespace Practice1NUnit
         
         
         [Test]
-        public void MathFunctionCSV_NotNaN_ReturnsTrue()
+        [TestCaseSource(nameof(GetCsv))]
+        public void MathFunctionCSV_NotNaN_ReturnsTrue(int x)
         {
             // Arrange
-            var output = ReadCsv("D:/Studying/Automated-testing/Automated-Testing/LAB1/LAB1/Practice1MsTest/file.csv");
-            var num = int.Parse(output[0]);
             var obj = new MethodLibrary();
             
             
             // Act
-            var ret = obj.MathFunction(5 );
+            var ret = obj.MathFunction(x );
             
             
             // Assert
