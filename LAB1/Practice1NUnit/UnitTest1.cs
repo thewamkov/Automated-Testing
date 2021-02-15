@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using NUnit.Framework.Internal;
 using FluentAssertions;
 using Microsoft.VisualBasic.FileIO;
@@ -227,11 +228,7 @@ namespace Practice1NUnit
         [Test, Timeout(60)]
         public void TimeoutTest_ShouldFailIfTimeout()
         {
-          
-            while (true)
-            {
-               
-            }
+            Thread.Sleep(60);
         }
         
         

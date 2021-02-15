@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Threading;
 using FluentAssertions;
 namespace Practice1MsTest
 {
@@ -206,10 +207,7 @@ namespace Practice1MsTest
        [TestMethod, Timeout(60)]
        public void TimeoutTest_ShouldFailIfTimeout()
        {
-           while (true)
-           {
-               
-           }
+          Thread.Sleep(60);
        }
        
        
