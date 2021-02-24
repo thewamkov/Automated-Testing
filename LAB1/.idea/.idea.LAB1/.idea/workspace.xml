@@ -4,17 +4,7 @@
     <projectFile>MethodClass/MethodClass.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c909e7f4-dbd3-4058-8cf6-22f40581000e" name="Default Changelist" comment="LAB 2 - Done">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GoogleDriveAPI/GoogleDriveAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GoogleDriveAPI/GoogleDriveAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GoogleDriveAPI/GoogleDriveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GoogleDriveAPI/GoogleDriveManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GoogleDriveAPI/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GoogleDriveAPI/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Practice1MsTest/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Practice1MsTest/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Practice1NUnit/Practice1NUnit.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Practice1NUnit/Practice1NUnit.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Practice1NUnit/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Practice1NUnit/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Practice1xUnit/Practice1xUnit.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Practice1xUnit/Practice1xUnit.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Practice1xUnit/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Practice1xUnit/UnitTest1.cs" afterDir="false" />
-    </list>
+    <list default="true" id="c909e7f4-dbd3-4058-8cf6-22f40581000e" name="Default Changelist" comment="LAB3 MVP" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +43,7 @@
       <option value="$PROJECT_DIR$/GoogleDriveAPI/App.config" />
       <option value="$PROJECT_DIR$/GoogleDriveAPI/GoogleDriveManager.cs" />
       <option value="$PROJECT_DIR$/GoogleDriveAPI/UnitTest1.cs" />
+      <option value="$PROJECT_DIR$/../.gitignore" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1o0hcDIgKuQvj2yuORJjSAKdKMV" />
@@ -123,7 +114,7 @@
       <workItem from="1614108413296" duration="400000" />
       <workItem from="1614110665613" duration="818000" />
       <workItem from="1614151898619" duration="1184000" />
-      <workItem from="1614184892678" duration="6559000" />
+      <workItem from="1614184892678" duration="6872000" />
     </task>
     <task id="LOCAL-00001" summary="LAB 2 - Done">
       <created>1613584875107</created>
@@ -132,7 +123,21 @@
       <option name="project" value="LOCAL" />
       <updated>1613584875107</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="LAB3 MVP">
+      <created>1614191486576</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614191486576</updated>
+    </task>
+    <task id="LOCAL-00003" summary="LAB3 MVP">
+      <created>1614191656313</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614191656313</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +161,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="LAB 2 - Done" />
-    <option name="LAST_COMMIT_MESSAGE" value="LAB 2 - Done" />
+    <MESSAGE value="LAB3 MVP" />
+    <option name="LAST_COMMIT_MESSAGE" value="LAB3 MVP" />
   </component>
 </project>
