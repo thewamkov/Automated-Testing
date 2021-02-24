@@ -1,4 +1,5 @@
-﻿using Google.Apis.Auth.OAuth2;
+﻿using System;
+using Google.Apis.Auth.OAuth2;
 using System.Configuration;
 using System.Linq;
 using System.Net;
@@ -103,23 +104,20 @@ namespace GoogleDriveAPI
                 
         }
 
-        public static HttpStatusCode CreateFile(string name)
+        public static Int32 CreateFile(string body)
         {
+            //Create POST request to create file in google drive.
             var client = new RestClient($"https://www.googleapis.com/drive/v3/files?key={_config.AppSettings.Settings["api_key"].Value}");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", $"{_TokenType} {_Token}");
-            request.AddHeader("Content-type", "application/json");
+            request.AddParameter("application/json", body,  ParameterType.RequestBody);
             
-            request.AddJsonBody(
-                new
-                {
-                    name = name
-                    
-                });
             IRestResponse response = client.Execute(request);
-
             
-            return response.StatusCode;
+            // Return status code
+            return  Convert.ToInt32(response.StatusCode);
+            
+            
         }
         
 

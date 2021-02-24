@@ -46,26 +46,27 @@ namespace GoogleDriveAPI
             
         }
 
-        // Test Check if file is successfully created
+        // Test Check if file is successfully created.
         [Test]
         public void CreateFile_StatusCode200_ShouldBeReturned()
         {
             // Arrange
             var StatusCode = 0;
-            var testOrders = new Faker<File>()
-                //Ensure all properties have rules. By default, StrictMode is false
-                //Set a global policy by using Faker.DefaultStrictMode
-                .RuleFor(o => o.Name, f => f.Hacker.Verb()).Generate();
+            Welcome testOrders = new Faker<Welcome>()
+                // Generate values for fields.
+                .RuleFor(o => o.name, f => f.Hacker.Verb())
+                .RuleFor(o => o.description, f => f.Hacker.Phrase());
             
             
-
             // Act
-            StatusCode = Convert.ToInt32(GoogleDriveManager.CreateFile(testOrders.Name));
+            var body = JsonSerializer.Serialize(testOrders);
+            StatusCode = GoogleDriveManager.CreateFile(body);
+            Console.Write("Request body -  "); 
             
-
+            
             //Assert
             Assert.AreEqual(StatusCode, 200);
-         
+            Console.WriteLine(body);
         }
     }
 }
