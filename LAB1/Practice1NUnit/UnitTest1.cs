@@ -5,6 +5,8 @@ using System.Threading;
 using NUnit.Framework.Internal;
 using FluentAssertions;
 using Microsoft.VisualBasic.FileIO;
+using Practice1MsTest;
+
 namespace Practice1NUnit
 {
     public class MethodLibrary
@@ -14,13 +16,14 @@ namespace Practice1NUnit
         public double MathFunction(int x)
         {
             
-            // if (x - 1  == 0)
-            //     throw new DivideByZeroException();
-            //
-            // return (Math.Sqrt(x - 1) / (x - 1));
-            
-            //     // I have to throw exception manually because double/0 will be infinity, so i check if denominator is 0.
-            return x - 1 <= 0 ? throw new DivideByZeroException() : Math.Sqrt(x - 1) / (x - 1);
+            // I have to throw exception manually because double/0 will be infinity, so i check if denominator is 0.
+            if (x - 1 == 0)
+                throw new DivideByZeroException();
+                    
+            else if (x - 1 < 0)
+                throw new SquareRootException("Square Root Problems");
+                    
+            return (Math.Sqrt(x - 1) / (x - 1));
 
         }
         

@@ -1,13 +1,11 @@
 using System;
 using NUnit.Framework;
 using System.Collections.Generic;
+using Bogus;
+using GoogleDriveAPI_V2;
 using Microsoft.VisualBasic.FileIO;
-using Google.Apis.Auth.OAuth2;
-using System.Configuration;
-using System.Reflection;
-using System.Threading;
-using RestSharp;
-
+using System.Text.Json.Serialization;
+using System.Text.Json;
 namespace GoogleDriveAPI
 {
     
@@ -15,8 +13,8 @@ namespace GoogleDriveAPI
     
     public class Tests
     {
-        //
-
+        
+        
         public static IEnumerable<string> GetCsv()
         {
             using (TextFieldParser parser =
@@ -32,12 +30,7 @@ namespace GoogleDriveAPI
                 }
             }
         }
-
-
-        [OneTimeSetUp]
-        public void Setup()
-        {
-        }
+        
 
         
         [Test]
@@ -51,6 +44,28 @@ namespace GoogleDriveAPI
             //Assert
             Assert.IsTrue(GoogleDriveManager.Exists(x));
             
+        }
+
+        // Test Check if file is successfully created
+        [Test]
+        public void CreateFile_StatusCode200_ShouldBeReturned()
+        {
+            // Arrange
+            var StatusCode = 0;
+            var testOrders = new Faker<File>()
+                //Ensure all properties have rules. By default, StrictMode is false
+                //Set a global policy by using Faker.DefaultStrictMode
+                .RuleFor(o => o.Name, f => f.Hacker.Verb()).Generate();
+            
+            
+
+            // Act
+            StatusCode = Convert.ToInt32(GoogleDriveManager.CreateFile(testOrders.Name));
+            
+
+            //Assert
+            Assert.AreEqual(StatusCode, 200);
+         
         }
     }
 }

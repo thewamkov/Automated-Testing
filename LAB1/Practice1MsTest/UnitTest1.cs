@@ -10,20 +10,29 @@ namespace Practice1MsTest
 
         public double MathFunction(int x)
         {
+             // I have to throw exception manually because double/0 will be infinity, so i check if denominator is 0.
+             if (x - 1 == 0)
+                 throw new DivideByZeroException();
+                    
+            else if (x - 1 < 0)
+                 throw new SquareRootException("Square Root Problems");
+                    
+            return (Math.Sqrt(x - 1) / (x - 1));
             
-            // if (x - 1  == 0)
-            //     throw new DivideByZeroException();
-            //
-            // return (Math.Sqrt(x - 1) / (x - 1));
-            
-            //     // I have to throw exception manually because double/0 will be infinity, so i check if denominator is 0.
-            return x - 1 <= 0 ? throw new DivideByZeroException() : Math.Sqrt(x - 1) / (x - 1);
 
         }
         
     }
-    
-    
+
+    public class SquareRootException : Exception
+    {
+        public SquareRootException(string squareRootProblems)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
     [TestClass]
     public class UnitTest1
     {
@@ -227,7 +236,6 @@ namespace Practice1MsTest
             
            
            // Assert
-           // result.Should().Throw<DivideByZeroException>();
            Assert.ThrowsException<DivideByZeroException>(result);
             
        }

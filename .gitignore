@@ -8,6 +8,8 @@ bin-release/
 .settings/
 App.config
 files.csv
+.idea/
+
 
 # Executables
 *.swf

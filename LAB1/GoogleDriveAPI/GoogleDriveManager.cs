@@ -1,6 +1,7 @@
 ﻿using Google.Apis.Auth.OAuth2;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading;
 using Google.Apis.Util.Store;
@@ -13,6 +14,7 @@ namespace GoogleDriveAPI
     {
         static private Configuration _config;
         static private string _Token;
+        static private string _TokenType;
 #if GOOGLEAPI_V3
         static public File[] files;
 #else
@@ -41,6 +43,7 @@ namespace GoogleDriveAPI
                 new FileDataStore(@"D:\Studying", true)).Result;
             
             _Token = credential.Token.AccessToken;
+            _TokenType = credential.Token.TokenType;
 
 
 // Get all files from drive.
@@ -61,11 +64,6 @@ namespace GoogleDriveAPI
             files = GoogleDriveAPI_V2.NewTonSoftV2.FromJson(response.Content).Items;
             names = files.Select(file =>  file.Title ).ToArray();
 #endif
-            
-            
-            
-            
-            
         }
 
         
@@ -103,6 +101,25 @@ namespace GoogleDriveAPI
 
             }
                 
+        }
+
+        public static HttpStatusCode CreateFile(string name)
+        {
+            var client = new RestClient($"https://www.googleapis.com/drive/v3/files?key={_config.AppSettings.Settings["api_key"].Value}");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", $"{_TokenType} {_Token}");
+            request.AddHeader("Content-type", "application/json");
+            
+            request.AddJsonBody(
+                new
+                {
+                    name = name
+                    
+                });
+            IRestResponse response = client.Execute(request);
+
+            
+            return response.StatusCode;
         }
         
 
