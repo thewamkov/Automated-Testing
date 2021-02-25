@@ -51,7 +51,7 @@ namespace GoogleDriveAPI
         public void CreateFile_StatusCode200_ShouldBeReturned()
         {
             // Arrange
-            var StatusCode = 0;
+            int StatusCode;
             Welcome testOrders = new Faker<Welcome>()
                 // Generate values for fields.
                 .RuleFor(o => o.name, f => f.Hacker.Verb())
