@@ -1,31 +1,25 @@
 using System;
-using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumTests.PageObjects;
+
 
 namespace SeleniumTests
 {
-   
-
     public class Tests
     {
         private IWebDriver driver;
-        private int price = 0;
-        
-        
-            
-       
+
 
         [SetUp]
         public void Setup()
         {
+            // var chromeOptions = new ChromeOptions();
+            // chromeOptions.AddArgument("headless");
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://rozetka.com.ua");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
             driver.Manage().Window.Maximize();
-
         }
 
 
@@ -34,38 +28,36 @@ namespace SeleniumTests
         {
             driver.Quit();
         }
-        
-        
-        [Test]
+
+
+        [TestCase("Lenovo Legion")]
         // [Repeat(20)]
-        public void PriceCheck_TileAndProdPagePriceShouldBeEqual_ReturnsTrue()
+        public void PriceCheck_TileAndProdPagePriceShouldBeEqual_ReturnsTrue( string value)
         {
             // Act
-            var mainMenu = new  MainMenuPageObject(driver); 
-            
+            var mainMenu = new MainMenuPageObject(driver);
 
+            
             // Arrange
-            mainMenu.ChangeLanguage();
-            mainMenu.SearchFor("lenovo");
-            price = mainMenu.getTilePrice();
+            var prodList = mainMenu.OpenMenu()
+                .ChangeLanguage()
+                .Type(value)
+                .Search();
+
+            var price = prodList
+                .GetTilePrice();
+
+            var prodPage = prodList.OpenProductPage();
+            
+            var pagePrice = prodPage.ProductPagePrice();
+
+            var newTilePrice = prodPage.GoBack()
+                .GetTilePrice();
+
 
             // Assert
-            Assert.AreEqual(price, mainMenu.OpenProductPage().ProductPagePrice());
+            Assert.AreEqual(price, pagePrice);
+            Assert.AreEqual(price, newTilePrice);
         }
-
-        
-        // [Test]
-        // public void Test2()
-        // {
-        //     // Act
-        //     var mainMenu = new  MainMenuPageObject(driver);
-        //     
-        //     // Arrange
-        //     driver.Navigate().Back();
-        //     var backPrice = mainMenu.getTilePrice();
-        //     // Assert
-        //     Assert.AreEqual(price, backPrice);
-        //     
-        // }
     }
 }
