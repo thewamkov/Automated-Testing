@@ -9,8 +9,7 @@ namespace SeleniumTests.PageObjects
     {
         private readonly IWebDriver _webDriver;
         private readonly By _productPagePrice = By.XPath("//p[contains(@class, 'product-prices__big')]");
-        
-        
+
         public ProductPageObject(IWebDriver webDriver)
         {
             _webDriver = webDriver;

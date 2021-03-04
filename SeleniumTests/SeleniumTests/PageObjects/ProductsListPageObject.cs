@@ -19,9 +19,9 @@ namespace SeleniumTests.PageObjects
         
         
         /// <summary>
-        /// This function Extract Price of product from tile.
+        /// This function Extract Price of product from tile .
         /// </summary>
-        /// <returns>Returns price of product from tile of products.</returns>
+        /// <returns>Returns price of product from tile of products .</returns>
         public int GetTilePrice()
         { 
             var tilePrice = Convert.ToInt32(Regex.Replace(_webDriver.FindElement(_tilePrice).Text, @"\s+", ""));
@@ -31,9 +31,9 @@ namespace SeleniumTests.PageObjects
         
         
         /// <summary>
-        /// This function navigates to product page and returns ProductPageObject object.
+        /// This function navigates to product page and returns ProductPageObject object .
         /// </summary>
-        /// <returns>Object of class ProductsListPageObject for accessing it's methods.</returns>
+        /// <returns>Object of class ProductsListPageObject for accessing it's methods .</returns>
         public ProductPageObject OpenProductPage()
         {
             _webDriver.FindElement(_productPage).Click();

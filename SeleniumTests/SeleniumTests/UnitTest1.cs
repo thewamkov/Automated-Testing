@@ -8,7 +8,7 @@ namespace SeleniumTests
 {
     public class Tests
     {
-        private IWebDriver driver;
+        private IWebDriver _driver;
 
 
         [SetUp]
@@ -16,26 +16,28 @@ namespace SeleniumTests
         {
             // var chromeOptions = new ChromeOptions();
             // chromeOptions.AddArgument("headless");
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
-            driver.Navigate().GoToUrl("https://rozetka.com.ua");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
-            driver.Manage().Window.Maximize();
+            _driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            _driver.Navigate().GoToUrl("https://rozetka.com.ua");
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+            // _driver.Manage().Cookies.DeleteAllCookies();
+            _driver.Manage().Window.Maximize();
         }
-
 
         [TearDown]
         public void TearDown()
         {
-            driver.Quit();
+            _driver.Quit();
         }
 
 
+        
+
         [TestCase("Lenovo Legion")]
-        // [Repeat(20)]
+        [Repeat(20)]
         public void PriceCheck_TileAndProdPagePriceShouldBeEqual_ReturnsTrue( string value)
         {
             // Act
-            var mainMenu = new MainMenuPageObject(driver);
+            var mainMenu = new MainMenuPageObject(_driver);
 
             
             // Arrange

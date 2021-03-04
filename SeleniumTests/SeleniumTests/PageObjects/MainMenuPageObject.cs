@@ -9,6 +9,7 @@ namespace SeleniumTests.PageObjects
         private readonly By _ruLanguage = By.XPath("//a[contains(text(), 'RU')]");
         private readonly By _searchRu = By.XPath("//input[contains(@placeholder, 'Я ищу')]");
         private readonly By _searchButtonRu = By.XPath("//button[contains(text(), 'Найти')]");
+        
 
 
         // Constructor
