@@ -31,7 +31,7 @@ namespace WebScraper
             
             
             // Create  HtmlWeb object for each url.
-            var categoriesObjects = categoriesUrls.Select(new HtmlWeb().Load); // New Version
+            var categoriesObjects = categoriesUrls.Select(new HtmlWeb().Load);
 
             
             // 115 sec
@@ -59,10 +59,10 @@ namespace WebScraper
             }
             
             // Download books.
-            var webClient = new WebClient();
-            bookIds
-                .AsParallel()
-                .ForAll(id => webClient.DownloadFile($"https://allitbooks.net/download-file-{id}.html", $"C:/{id}.pdf"));
+            // var webClient = new WebClient();
+            // bookIds
+            //     .AsParallel()
+            //     .ForAll(id => webClient.DownloadFile($"https://allitbooks.net/download-file-{id}.html", $"C:/{id}.pdf"));
             
 
             watch.Stop();
